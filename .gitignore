@@ -1,0 +1,13 @@
+# Операционная система
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Редакторы
+.vscode/
+.idea/
+
+# Временные и тестовые файлы
+_mobile-test*.html
+*.tmp
+*.log
