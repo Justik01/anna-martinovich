@@ -10,9 +10,15 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Анна Мартинович — коуч, психолог-консультант">
 <meta property="og:description" content="Помогаю найти свое предназначение и наиболее выгодный и легкий путь реализации на новом этапе жизни.">
-<meta property="og:image" content="assets/anna-hero-crop.png">
+<meta property="og:image" content="https://justik01.github.io/anna-martinovich/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:locale" content="ru_RU">
 <meta name="twitter:card" content="summary_large_image">
+
+<!-- Системные / SEO -->
+<meta name="theme-color" content="#d1c3b8">
+<link rel="canonical" href="https://justik01.github.io/anna-martinovich/">
 
 <!-- Фавикон -->
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
@@ -39,7 +45,7 @@ document.addEventListener('click', function(e){
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
   html { scroll-behavior: smooth; }
@@ -48,6 +54,8 @@ document.addEventListener('click', function(e){
   .accent-line {
     width: 64px; height: 3px; background: #a80206; border-radius: 999px;
   }
+  /* Акцентный текст на тёмном фоне (контраст 6:1, норма WCAG AA) */
+  .accent-on-dark { color: #e7b8a4; }
   .btn-accent {
     background: #a80206; color: #f4ece7;
     transition: background-color .25s ease, transform .25s ease, box-shadow .25s ease;
@@ -185,8 +193,10 @@ document.addEventListener('click', function(e){
 
         <!-- арка с фото -->
         <div class="relative bg-sand rounded-t-full rounded-b-3xl overflow-hidden shadow-2xl aspect-[3/4] flex items-end justify-center">
-          <img src="assets/anna-hero-crop.png"
+          <img src="assets/anna-hero.webp"
                alt="Анна Мартинович — коуч, психолог-консультант"
+               width="1040" height="1802"
+               fetchpriority="high" decoding="async"
                class="h-[97%] w-auto object-contain object-bottom"
                onerror="this.style.display='none'">
         </div>
@@ -321,8 +331,10 @@ document.addEventListener('click', function(e){
         <span class="absolute -top-5 -left-5 w-14 h-14 rounded-full border-2 border-accent/60 z-10"></span>
         <span class="absolute bottom-10 -right-4 w-9 h-9 rounded-full border-2 border-cocoa/40 z-10"></span>
         <div class="relative bg-sand rounded-t-[14rem] rounded-b-3xl overflow-hidden shadow-2xl aspect-[4/5]">
-          <img src="assets/anna-about.jpg"
+          <img src="assets/anna-about.webp"
                alt="Анна Мартинович на консультации"
+               width="800" height="800"
+               loading="lazy" decoding="async"
                class="w-full h-full object-cover"
                onerror="this.style.display='none'">
         </div>
@@ -536,7 +548,7 @@ document.addEventListener('click', function(e){
         <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-accent text-cream text-[11px] font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full whitespace-nowrap">Частый выбор</span>
         <h3 class="font-display text-xl mb-2">Консультация</h3>
         <!-- ЗАМЕНИТЬ цену на реальную -->
-        <p class="font-display text-3xl text-accent mb-4">от 80 BYN</p>
+        <p class="font-display text-3xl accent-on-dark font-semibold mb-4">от 80 BYN</p>
         <p class="text-sm text-cream/90 leading-relaxed">Индивидуальная встреча 60 минут онлайн (Zoom, Skype, Telegram) или очно.</p>
       </div>
 
