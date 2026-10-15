@@ -137,7 +137,6 @@ document.addEventListener('click', function(e){
       <a href="#about" class="nav-link">Обо мне</a>
       <a href="#how" class="nav-link">Как работаю</a>
       <a href="#cases" class="nav-link">Кейсы</a>
-      <a href="#price" class="nav-link">Стоимость</a>
       <a href="#faq" class="nav-link">Вопросы</a>
     </nav>
     <!-- Ссылка на Telegram-бота -->
@@ -243,30 +242,30 @@ document.addEventListener('click', function(e){
     </p>
   </div>
 
-  <div class="relative z-10 max-w-4xl mx-auto mt-12 grid sm:grid-cols-2 gap-5">
-    <div class="card reveal bg-cream rounded-3xl p-6 flex items-start gap-4 shadow-sm hover:shadow-xl">
+  <div class="relative z-10 max-w-4xl mx-auto mt-12 grid sm:grid-cols-2 gap-4">
+    <div class="card reveal bg-cream rounded-3xl p-5 flex items-start gap-3 shadow-sm hover:shadow-xl">
       <span class="mt-1 w-2.5 h-2.5 rounded-full bg-accent shrink-0"></span>
-      <p class="text-deep leading-relaxed font-medium">не справлюсь со своими обязанностями</p>
+      <p class="text-lg text-deep leading-normal font-medium">не справлюсь со своими обязанностями</p>
     </div>
-    <div class="card reveal reveal-d1 bg-cream rounded-3xl p-6 flex items-start gap-4 shadow-sm hover:shadow-xl">
+    <div class="card reveal reveal-d1 bg-cream rounded-3xl p-5 flex items-start gap-3 shadow-sm hover:shadow-xl">
       <span class="mt-1 w-2.5 h-2.5 rounded-full bg-accent shrink-0"></span>
-      <p class="text-deep leading-relaxed font-medium">не уверена, что моя нынешняя работа мне подходит</p>
+      <p class="text-lg text-deep leading-normal font-medium">не уверена, что моя нынешняя работа мне подходит</p>
     </div>
-    <div class="card reveal reveal-d1 bg-cream rounded-3xl p-6 flex items-start gap-4 shadow-sm hover:shadow-xl">
+    <div class="card reveal reveal-d1 bg-cream rounded-3xl p-5 flex items-start gap-3 shadow-sm hover:shadow-xl">
       <span class="mt-1 w-2.5 h-2.5 rounded-full bg-accent shrink-0"></span>
-      <p class="text-deep leading-relaxed font-medium">неуверенно чувствую себя на собеседовании</p>
+      <p class="text-lg text-deep leading-normal font-medium">неуверенно чувствую себя на собеседовании</p>
     </div>
-    <div class="card reveal reveal-d2 bg-cream rounded-3xl p-6 flex items-start gap-4 shadow-sm hover:shadow-xl">
+    <div class="card reveal reveal-d2 bg-cream rounded-3xl p-5 flex items-start gap-3 shadow-sm hover:shadow-xl">
       <span class="mt-1 w-2.5 h-2.5 rounded-full bg-accent shrink-0"></span>
-      <p class="text-deep leading-relaxed font-medium">боюсь отказов на собеседовании</p>
+      <p class="text-lg text-deep leading-normal font-medium">боюсь отказов на собеседовании</p>
     </div>
-    <div class="card reveal reveal-d2 bg-cream rounded-3xl p-6 flex items-start gap-4 shadow-sm hover:shadow-xl">
+    <div class="card reveal reveal-d2 bg-cream rounded-3xl p-5 flex items-start gap-3 shadow-sm hover:shadow-xl">
       <span class="mt-1 w-2.5 h-2.5 rounded-full bg-accent shrink-0"></span>
-      <p class="text-deep leading-relaxed font-medium">боюсь, что буду всё время проводить на работе, а на семью время не останется</p>
+      <p class="text-lg text-deep leading-normal font-medium">боюсь, что буду всё время проводить на работе, а на семью время не останется</p>
     </div>
-    <div class="card reveal reveal-d3 bg-cream rounded-3xl p-6 flex items-start gap-4 shadow-sm hover:shadow-xl">
+    <div class="card reveal reveal-d3 bg-cream rounded-3xl p-5 flex items-start gap-3 shadow-sm hover:shadow-xl">
       <span class="mt-1 w-2.5 h-2.5 rounded-full bg-accent shrink-0"></span>
-      <p class="text-deep leading-relaxed font-medium">не смогу конкурировать с более молодыми сотрудниками</p>
+      <p class="text-lg text-deep leading-normal font-medium">не смогу конкурировать с более молодыми сотрудниками</p>
     </div>
   </div>
 
@@ -346,8 +345,9 @@ document.addEventListener('click', function(e){
       <p class="uppercase tracking-[0.3em] text-xs text-accent mb-4 reveal">Обо мне</p>
       <div class="accent-line mb-6"></div>
 
-      <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl text-deep leading-tight mb-8 reveal reveal-d1">
-        Я Анна Мартинович — <span class="text-accent">коуч, психолог-консультант.</span>
+      <!-- Кегль уменьшен, чтобы заголовок становился в одну строку. На lg текст живёт в узкой колонке сетки (≈580px), поэтому там кегль меньше, чем на планшете. -->
+      <h2 class="font-display text-2xl sm:text-[27px] lg:text-[22px] text-deep leading-tight mb-8 reveal reveal-d1">
+        Я Анна Мартинович — <span class="text-accent">коуч, психолог-консультант</span>
       </h2>
 
       <p class="text-lg leading-relaxed text-deep mb-5 reveal reveal-d1">
@@ -521,51 +521,6 @@ document.addEventListener('click', function(e){
         Узнать подробнее
       </a>
     </div>
-  </div>
-</section>
-
-
-<!-- ============ ФОРМАТ И СТОИМОСТЬ ============ -->
-<section id="price" class="relative overflow-hidden px-6 sm:px-10 lg:px-20 py-20 lg:py-28 curve-top">
-  <span class="blob blob-sand w-[32rem] h-[32rem] -bottom-24 -left-24"></span>
-  <div class="relative z-10 max-w-5xl mx-auto">
-    <div class="text-center mb-14">
-      <div class="accent-line mx-auto mb-6"></div>
-      <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl text-deep reveal">Формат и стоимость</h2>
-      <p class="mt-5 text-deep/90 max-w-2xl mx-auto leading-relaxed reveal reveal-d1">
-        Никаких скрытых платежей и обязательных пакетов — каждая встреча оплачивается отдельно.
-      </p>
-    </div>
-
-    <div class="grid sm:grid-cols-3 gap-6 items-stretch">
-      <div class="reveal bg-cream rounded-3xl p-7 shadow-sm flex flex-col hover:shadow-lg transition-shadow">
-        <h3 class="font-display text-xl text-deep mb-2">Знакомство</h3>
-        <p class="font-display text-3xl text-accent mb-4">Бесплатно</p>
-        <p class="text-sm text-deep/90 leading-relaxed">Созвон 15 минут: вы задаёте вопросы и понимаете, подхожу ли я как специалист.</p>
-      </div>
-
-      <div class="reveal reveal-d1 relative bg-deep text-cream rounded-3xl p-7 shadow-xl sm:shadow-2xl flex flex-col hover:shadow-2xl transition-shadow">
-        <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-accent text-cream text-[11px] font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full whitespace-nowrap">Частый выбор</span>
-        <h3 class="font-display text-xl mb-2">Консультация</h3>
-        <!-- ЗАМЕНИТЬ цену на реальную -->
-        <p class="font-display text-3xl accent-on-dark font-semibold mb-4">от 80 BYN</p>
-        <p class="text-sm text-cream/90 leading-relaxed">Индивидуальная встреча 60 минут онлайн (Zoom, Skype, Telegram) или очно.</p>
-      </div>
-
-      <div class="reveal reveal-d2 bg-cream rounded-3xl p-7 shadow-sm flex flex-col hover:shadow-lg transition-shadow">
-        <h3 class="font-display text-xl text-deep mb-2">Программа</h3>
-        <!-- ЗАМЕНИТЬ цену на реальную -->
-        <p class="font-display text-3xl text-accent mb-4">от 680 BYN</p>
-        <p class="text-sm text-deep/90 leading-relaxed">Пакет 8 встреч со скидкой — устойчивый результат за 1–2 месяца работы.</p>
-      </div>
-    </div>
-
-    <ul class="mt-10 max-w-2xl mx-auto space-y-3 text-deep reveal">
-      <li class="flex gap-3"><span class="text-accent">—</span> Онлайн из любой точки мира или очные встречи</li>
-      <li class="flex gap-3"><span class="text-accent">—</span> Оплата картой, переводом или наличными</li>
-      <li class="flex gap-3"><span class="text-accent">—</span> Перенос встречи — не позднее чем за 24 часа без штрафа</li>
-      <li class="flex gap-3"><span class="text-accent">—</span> Полная конфиденциальность</li>
-    </ul>
   </div>
 </section>
 
