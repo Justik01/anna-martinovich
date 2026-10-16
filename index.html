@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- fail-safe: если JS не выполнится (ошибка, отключён), блоки .reveal не останутся невидимыми -->
+<script>document.documentElement.className += ' js';</script>
 <title>Анна Мартинович — коуч, психолог-консультант</title>
 <meta name="description" content="Помогаю найти свое предназначение и наиболее выгодный и легкий путь реализации на новом этапе жизни. Коуч, психолог-консультант Анна Мартинович.">
 
@@ -95,10 +97,11 @@ document.addEventListener('click', function(e){
   }
   .nav-link { position: relative; }
   .nav-link::after {
-    content: ''; position: absolute; left: 0; bottom: -4px; width: 0; height: 2px;
-    background: #a80206; transition: width .25s ease;
+    content: ''; position: absolute; left: 0; bottom: -4px; width: 100%; height: 2px;
+    background: #a80206; transform: scaleX(0); transform-origin: left center;
+    transition: transform .25s ease;
   }
-  .nav-link:hover::after { width: 100%; }
+  .nav-link:hover::after { transform: scaleX(1); }
 
   /* ===== ПЛАВАЮЩАЯ КНОПКА ЗАПИСИ ===== */
   .fab {
@@ -111,20 +114,36 @@ document.addEventListener('click', function(e){
   @media (max-width: 640px) { .fab { right: 1rem; bottom: 1rem; } }
 
   /* ===== ПОЯВЛЕНИЕ БЛОКОВ ПРИ ПРОКРУТКЕ ===== */
-  .reveal { opacity: 0; transform: translateY(30px); transition: opacity .8s cubic-bezier(.2,.6,.2,1), transform .8s cubic-bezier(.2,.6,.2,1); }
-  .reveal.in { opacity: 1; transform: none; }
+  .js .reveal { opacity: 0; transform: translateY(30px); transition: opacity .8s cubic-bezier(.2,.6,.2,1), transform .8s cubic-bezier(.2,.6,.2,1); }
+  .js .reveal.in { opacity: 1; transform: none; }
   .reveal-d1 { transition-delay: .1s; }
   .reveal-d2 { transition-delay: .2s; }
   .reveal-d3 { transition-delay: .3s; }
 
+  /* prefers-reduced-motion защищает ВСЁ движение страницы, а не только .reveal:
+     шапка (translateY), плавающая кнопка (opacity+scale), подъём карточек и кнопок.
+     Сам transform у .site-header/.fab сохраняем — на нём держится показ/скрытие,
+     просто убираем сам переход. */
   @media (prefers-reduced-motion: reduce) {
-    .reveal { opacity: 1; transform: none; transition: none; }
     html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: .01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: .01ms !important;
+      transition-delay: 0ms !important;
+    }
+    .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+    .fab { transform: none !important; }
+  }
+
+  /* На тач-устройствах hover «прилипает» после тапа — гейтим подъём */
+  @media (hover: none), (pointer: coarse) {
+    .card:hover, .btn-accent:hover, .fab:hover { transform: none; }
   }
 </style>
 </head>
 
-<body class="font-sans text-cocoa antialiased">
+<body class="font-sans text-deep antialiased">
 
 <!-- ============ ЛИПКАЯ ШАПКА ============ -->
 <header id="siteHeader" class="site-header">
@@ -166,7 +185,7 @@ document.addEventListener('click', function(e){
 
     <!-- Левая колонка: текст -->
     <div class="order-1 lg:col-start-1 lg:row-start-1 reveal">
-      <p class="italic text-deep/75 text-sm mb-5 flex items-center justify-center lg:justify-start gap-3">
+      <p class="italic text-deep text-sm mb-5 flex items-center justify-center lg:justify-start gap-3">
         <span class="inline-block w-8 h-px bg-deep/40"></span>
         коуч • психолог-консультант
         <span class="inline-block w-8 h-px bg-deep/40"></span>
@@ -307,7 +326,7 @@ document.addEventListener('click', function(e){
          class="btn-accent inline-flex justify-center items-center px-8 py-4 rounded-full text-sm font-semibold uppercase tracking-widest">
         Узнать подробнее
       </a>
-      <p class="mt-4 text-sm text-deep/80 italic">Это бесплатно и ни к чему не обязывает</p>
+      <p class="mt-4 text-sm text-deep italic">Это бесплатно и ни к чему не обязывает</p>
     </div>
   </div>
 </section>
@@ -374,16 +393,16 @@ document.addEventListener('click', function(e){
     <p class="uppercase tracking-[0.3em] text-xs text-accent mb-4 text-center">Образование и сертификаты</p>
     <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
       <div class="aspect-[3/4] rounded-xl border-2 border-dashed border-cocoa/40 flex items-center justify-center text-center p-4">
-        <span class="text-cocoa text-sm">Диплом 1<br>(вставьте фото)</span>
+        <span class="text-deep text-sm">Диплом 1<br>(вставьте фото)</span>
       </div>
       <div class="aspect-[3/4] rounded-xl border-2 border-dashed border-cocoa/40 flex items-center justify-center text-center p-4">
-        <span class="text-cocoa text-sm">Диплом 2<br>(вставьте фото)</span>
+        <span class="text-deep text-sm">Диплом 2<br>(вставьте фото)</span>
       </div>
       <div class="aspect-[3/4] rounded-xl border-2 border-dashed border-cocoa/40 flex items-center justify-center text-center p-4">
-        <span class="text-cocoa text-sm">Диплом 3<br>(вставьте фото)</span>
+        <span class="text-deep text-sm">Диплом 3<br>(вставьте фото)</span>
       </div>
       <div class="aspect-[3/4] rounded-xl border-2 border-dashed border-cocoa/40 flex items-center justify-center text-center p-4">
-        <span class="text-cocoa text-sm">Диплом 4<br>(вставьте фото)</span>
+        <span class="text-deep text-sm">Диплом 4<br>(вставьте фото)</span>
       </div>
     </div>
   </div>
