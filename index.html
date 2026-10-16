@@ -186,24 +186,20 @@ document.addEventListener('click', function(e){
     <div class="order-2 lg:col-start-2 lg:row-start-1 lg:row-span-2 flex justify-center lg:justify-end reveal reveal-d1">
       <div class="relative w-full max-w-[320px] sm:max-w-[400px] lg:max-w-[480px] xl:max-w-[520px]">
 
-        <!-- декоративные точки (единый контурный мотив) -->
-        <span class="absolute -top-5 -left-5 w-12 h-12 rounded-full border-2 border-accent/60 z-10"></span>
-        <span class="absolute bottom-20 -right-4 w-8 h-8 rounded-full border-2 border-cocoa/40 z-10"></span>
-
         <!-- арка с фото -->
         <div class="relative bg-sand rounded-t-full rounded-b-3xl overflow-hidden shadow-2xl aspect-[3/4] flex items-end justify-center">
-          <img src="assets/anna-hero.webp"
+          <img src="assets/zamena.webp"
                alt="Анна Мартинович — коуч, психолог-консультант"
-               width="1040" height="1802"
+               width="960" height="1280"
                fetchpriority="high" decoding="async"
-               class="h-[97%] w-auto object-contain object-bottom"
+               class="w-full h-full object-cover"
                onerror="this.style.display='none'">
-        </div>
 
-        <!-- бейдж с именем -->
-        <div class="absolute -bottom-6 left-1/2 -translate-x-1/2 bg-cream border border-cocoa/25 shadow-md rounded-2xl sm:rounded-full px-4 sm:px-5 py-2.5 flex items-center gap-2.5 max-w-[90%]">
-          <span class="w-2 h-2 rounded-full bg-accent shrink-0"></span>
-          <p class="text-deep text-xs sm:text-sm font-medium text-center leading-snug">Анна Мартинович — коуч, психолог-консультант</p>
+          <!-- плашка с именем поверх нижней части фото -->
+          <div class="absolute inset-x-0 bottom-0 z-10 bg-cream/90 backdrop-blur-[2px] px-4 pt-8 pb-6 text-center">
+            <p class="font-bold uppercase tracking-wide text-deep text-2xl sm:text-3xl lg:text-4xl leading-none">Анна Мартинович</p>
+            <p class="font-semibold uppercase tracking-[0.2em] text-accent text-[11px] sm:text-xs mt-2.5">Коуч, психолог-консультант</p>
+          </div>
         </div>
       </div>
     </div>
@@ -327,8 +323,6 @@ document.addEventListener('click', function(e){
     <!-- Фото в арке (единый мотив с героем) -->
     <div class="flex justify-center lg:justify-start reveal">
       <div class="relative w-full max-w-md lg:max-w-xl">
-        <span class="absolute -top-5 -left-5 w-14 h-14 rounded-full border-2 border-accent/60 z-10"></span>
-        <span class="absolute bottom-10 -right-4 w-9 h-9 rounded-full border-2 border-cocoa/40 z-10"></span>
         <div class="relative bg-sand rounded-t-[14rem] rounded-b-3xl overflow-hidden shadow-2xl aspect-[4/5]">
           <img src="assets/anna-about.webp"
                alt="Анна Мартинович на консультации"
