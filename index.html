@@ -52,6 +52,12 @@ document.addEventListener('click', function(e){
 <style>
   html { scroll-behavior: smooth; }
   body { background-color: #d1c3b8; }
+
+  /* Микро-типографика: заголовки ломаются ровными строками, абзацы не оставляют
+     одно слово в последней. taste-skill/references/copy.md:176.
+     Неподдерживающие браузеры игнорируют значение — поведение не меняется. */
+  h1, h2, h3 { text-wrap: balance; }
+  p          { text-wrap: pretty; }
   /* Тонкий разделитель-акцент */
   .accent-line {
     width: 64px; height: 3px; background: #a80206; border-radius: 999px;
