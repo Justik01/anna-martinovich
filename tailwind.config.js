@@ -19,7 +19,7 @@ module.exports = {
       },
       fontFamily: {
         display: ['"Playfair Display"', 'Georgia', 'serif'],
-        sans:    ['"Montserrat"', 'system-ui', 'sans-serif']
+        sans:    ['"Nunito Sans"', 'system-ui', 'sans-serif']
       }
     }
   }
