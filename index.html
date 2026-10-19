@@ -192,27 +192,6 @@ document.addEventListener('click', function(e){
     to   { transform: translateX(130%); }
   }
 
-  /* ===== ЛЕСЕНКА ШАГОВ (#how, #bot) =====
-     transform нельзя брать из .js .reveal (0,2,0): он глушит .step-line (0,1,0) и подменил бы
-     scaleX на translateY(16px), из-за чего линия поехала бы вниз вместо растяжения вправо.
-     Поэтому правило пишется с той же специфичностью, что и у .accent-bar, — .js .reveal.step-line. */
-  .step-line {
-    position: absolute;
-    left: 0; right: 0;
-    height: 1.5px;
-    background: rgba(168, 2, 6, .30);
-    pointer-events: none;
-  }
-  /* Вертикальный центр номера: p-6 (24px) + половина строки текста */
-  .step-line-how { top: 44px; }  /* text-4xl: строка 40px */
-  .step-line-bot { top: 42px; }  /* text-3xl: строка 36px */
-  .js .reveal.step-line {
-    transform: scaleX(0);
-    transform-origin: left center;
-    transition: transform .9s cubic-bezier(.23, 1, .32, 1) .45s, opacity .8s cubic-bezier(.23, 1, .32, 1);
-  }
-  .js .reveal.step-line.in { transform: scaleX(1); }
-
   /* Номер приезжает позже карточки: две скорости внутри одного блока читаются как
      «шаг», а не как единая заливка. Задержка наследуется отдельно от reveal-dN карточки. */
   .js .reveal .step-num {
@@ -415,7 +394,6 @@ document.addEventListener('click', function(e){
 
     <!-- та же лесенка, что и в «Как проходит работа» -->
     <div class="relative mt-10 grid sm:grid-cols-3 gap-5 text-left">
-      <span class="reveal step-line step-line-bot" aria-hidden="true"></span>
       <div class="relative reveal bg-sand rounded-3xl p-6 shadow-card hover:shadow-warm">
         <p class="step-num font-display text-accent text-3xl mb-2">1</p>
         <p class="text-deep font-medium leading-relaxed">Пройдёте короткий тест — 2–3 минуты, он поможет сформулировать ваш запрос</p>
@@ -529,10 +507,7 @@ document.addEventListener('click', function(e){
       </p>
     </div>
 
-    <!-- Линия прогресса лежит ПОД карточками (они позже в DOM при z-index auto и перекрывают её):
-         наружу выглядывают только отрезки в зазорах — именно они связывают шаги в лесенку. -->
     <div class="relative grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      <span class="reveal step-line step-line-how" aria-hidden="true"></span>
       <div class="relative reveal bg-cream rounded-3xl p-6 shadow-card hover:shadow-warm">
         <p class="step-num font-display text-accent text-4xl mb-3">01</p>
         <h3 class="font-display text-lg text-deep mb-2">Заявка и знакомство</h3>
