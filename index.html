@@ -63,8 +63,11 @@ document.addEventListener('click', function(e){
     transition: background-color .25s ease, transform .25s ease, box-shadow .25s ease;
   }
   .btn-accent:hover { background: #8d0205; transform: translateY(-2px); box-shadow: 0 10px 24px rgba(168,2,6,.28); }
-  .card { transition: transform .3s ease, box-shadow .3s ease; }
-  .card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(107,84,74,.18); }
+  /* Ховер карточек задаёт класс .hover\:shadow-warm (Tailwind),
+     а переход для него — общий список свойств в .js .reveal ниже.
+     Правила .card здесь удалены: они проигрывали .js .reveal по специфичности
+     и всё равно не доходили до элемента. */
+
   /* Вертикальное центрирование, не обрезающее контент, если он выше экрана */
   .hero-safe { justify-content: center; justify-content: safe center; }
 
@@ -108,7 +111,7 @@ document.addEventListener('click', function(e){
   @media (max-width: 640px) { .fab { right: 1rem; bottom: 1rem; } }
 
   /* ===== ПОЯВЛЕНИЕ БЛОКОВ ПРИ ПРОКРУТКЕ ===== */
-  .js .reveal { opacity: 0; transform: translateY(16px); transition: opacity .8s cubic-bezier(0.23, 1, 0.32, 1), transform .8s cubic-bezier(0.23, 1, 0.32, 1); }
+  .js .reveal { opacity: 0; transform: translateY(16px); transition: opacity .8s cubic-bezier(0.23, 1, 0.32, 1), transform .8s cubic-bezier(0.23, 1, 0.32, 1), box-shadow .3s ease; }
   .js .reveal.in { opacity: 1; transform: none; }
   /* Префикс .js обязателен: без него (0,1,0) проигрывает .js .reveal (0,2,0),
      и шорткат transition из базового правила обнуляет задержку — стаггер умирает. */
@@ -134,7 +137,7 @@ document.addEventListener('click', function(e){
 
   /* На тач-устройствах hover «прилипает» после тапа — гейтим подъём */
   @media (hover: none), (pointer: coarse) {
-    .card:hover, .btn-accent:hover, .fab:hover { transform: none; }
+    .btn-accent:hover, .fab:hover { transform: none; }
   }
 </style>
 </head>
@@ -250,27 +253,27 @@ document.addEventListener('click', function(e){
   </div>
 
   <div class="relative z-10 max-w-4xl mx-auto mt-12 grid sm:grid-cols-2 gap-4">
-    <div class="card reveal bg-cream rounded-3xl p-5 flex items-start gap-3 hover:shadow-xl">
+    <div class="reveal bg-cream rounded-3xl p-5 flex items-start gap-3 hover:shadow-warm">
       <span class="mt-1 w-2.5 h-2.5 rounded-full bg-accent shrink-0"></span>
       <p class="text-lg text-deep leading-normal font-medium">не справлюсь со своими обязанностями</p>
     </div>
-    <div class="card reveal reveal-d1 bg-cream rounded-3xl p-5 flex items-start gap-3 hover:shadow-xl">
+    <div class="reveal reveal-d1 bg-cream rounded-3xl p-5 flex items-start gap-3 hover:shadow-warm">
       <span class="mt-1 w-2.5 h-2.5 rounded-full bg-accent shrink-0"></span>
       <p class="text-lg text-deep leading-normal font-medium">не уверена, что моя нынешняя работа мне подходит</p>
     </div>
-    <div class="card reveal reveal-d1 bg-cream rounded-3xl p-5 flex items-start gap-3 hover:shadow-xl">
+    <div class="reveal reveal-d1 bg-cream rounded-3xl p-5 flex items-start gap-3 hover:shadow-warm">
       <span class="mt-1 w-2.5 h-2.5 rounded-full bg-accent shrink-0"></span>
       <p class="text-lg text-deep leading-normal font-medium">неуверенно чувствую себя на собеседовании</p>
     </div>
-    <div class="card reveal reveal-d2 bg-cream rounded-3xl p-5 flex items-start gap-3 hover:shadow-xl">
+    <div class="reveal reveal-d2 bg-cream rounded-3xl p-5 flex items-start gap-3 hover:shadow-warm">
       <span class="mt-1 w-2.5 h-2.5 rounded-full bg-accent shrink-0"></span>
       <p class="text-lg text-deep leading-normal font-medium">боюсь отказов на собеседовании</p>
     </div>
-    <div class="card reveal reveal-d2 bg-cream rounded-3xl p-5 flex items-start gap-3 hover:shadow-xl">
+    <div class="reveal reveal-d2 bg-cream rounded-3xl p-5 flex items-start gap-3 hover:shadow-warm">
       <span class="mt-1 w-2.5 h-2.5 rounded-full bg-accent shrink-0"></span>
       <p class="text-lg text-deep leading-normal font-medium">боюсь, что буду всё время проводить на работе, а на семью время не останется</p>
     </div>
-    <div class="card reveal reveal-d3 bg-cream rounded-3xl p-5 flex items-start gap-3 hover:shadow-xl">
+    <div class="reveal reveal-d3 bg-cream rounded-3xl p-5 flex items-start gap-3 hover:shadow-warm">
       <span class="mt-1 w-2.5 h-2.5 rounded-full bg-accent shrink-0"></span>
       <p class="text-lg text-deep leading-normal font-medium">не смогу конкурировать с более молодыми сотрудниками</p>
     </div>
@@ -298,15 +301,15 @@ document.addEventListener('click', function(e){
     </p>
 
     <div class="mt-10 grid sm:grid-cols-3 gap-5 text-left">
-      <div class="reveal bg-cream rounded-3xl p-6 hover:shadow-lg transition-shadow">
+      <div class="reveal bg-cream rounded-3xl p-6 hover:shadow-warm">
         <p class="font-display text-accent text-3xl mb-2">1</p>
         <p class="text-deep font-medium leading-relaxed">Пройдёте короткий тест — 2–3 минуты, он поможет сформулировать ваш запрос</p>
       </div>
-      <div class="reveal reveal-d1 bg-cream rounded-3xl p-6 hover:shadow-lg transition-shadow">
+      <div class="reveal reveal-d1 bg-cream rounded-3xl p-6 hover:shadow-warm">
         <p class="font-display text-accent text-3xl mb-2">2</p>
         <p class="text-deep font-medium leading-relaxed">Получите рекомендацию: какой формат работы подходит именно вам</p>
       </div>
-      <div class="reveal reveal-d2 bg-cream rounded-3xl p-6 hover:shadow-lg transition-shadow">
+      <div class="reveal reveal-d2 bg-cream rounded-3xl p-6 hover:shadow-warm">
         <p class="font-display text-accent text-3xl mb-2">3</p>
         <p class="text-deep font-medium leading-relaxed">Забронируете первую встречу и я лично отвечу на все вопросы</p>
       </div>
@@ -361,15 +364,15 @@ document.addEventListener('click', function(e){
       </p>
 
       <div class="mt-8 grid sm:grid-cols-3 gap-4">
-        <div class="reveal bg-cream rounded-3xl py-6 px-4 text-center hover:shadow-lg transition-shadow">
+        <div class="reveal bg-cream rounded-3xl py-6 px-4 text-center hover:shadow-warm">
           <p class="font-display text-accent text-xl">Ведические</p>
           <p class="text-sm mt-1.5 text-deep font-medium">знания</p>
         </div>
-        <div class="reveal reveal-d1 bg-cream rounded-3xl py-6 px-4 text-center hover:shadow-lg transition-shadow">
+        <div class="reveal reveal-d1 bg-cream rounded-3xl py-6 px-4 text-center hover:shadow-warm">
           <p class="font-display text-accent text-xl">Современные</p>
           <p class="text-sm mt-1.5 text-deep font-medium">практики осознания</p>
         </div>
-        <div class="reveal reveal-d2 bg-cream rounded-3xl py-6 px-4 text-center hover:shadow-lg transition-shadow">
+        <div class="reveal reveal-d2 bg-cream rounded-3xl py-6 px-4 text-center hover:shadow-warm">
           <p class="font-display text-accent text-xl">Врождённые</p>
           <p class="text-sm mt-1.5 text-deep font-medium">психотипы</p>
         </div>
@@ -410,22 +413,22 @@ document.addEventListener('click', function(e){
     </div>
 
     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      <div class="relative reveal bg-sand/70 rounded-3xl p-6 hover:shadow-xl transition-shadow">
+      <div class="relative reveal bg-sand/70 rounded-3xl p-6 hover:shadow-warm">
         <p class="font-display text-accent text-4xl mb-3">01</p>
         <h3 class="font-display text-lg text-deep mb-2">Заявка и знакомство</h3>
         <p class="text-sm text-deep/90 leading-relaxed">Вы проходите короткий тест в Telegram-боте и оставляете заявку. Я отвечаю лично в течение рабочего дня.</p>
       </div>
-      <div class="relative reveal reveal-d1 bg-sand/70 rounded-3xl p-6 hover:shadow-xl transition-shadow">
+      <div class="relative reveal reveal-d1 bg-sand/70 rounded-3xl p-6 hover:shadow-warm">
         <p class="font-display text-accent text-4xl mb-3">02</p>
         <h3 class="font-display text-lg text-deep mb-2">Бесплатный созвон</h3>
         <p class="text-sm text-deep/90 leading-relaxed">15 минут, чтобы вы поняли, подхожу ли я как специалист, а я — какая работа нужна именно вам. Без обязательств.</p>
       </div>
-      <div class="relative reveal reveal-d2 bg-sand/70 rounded-3xl p-6 hover:shadow-xl transition-shadow">
+      <div class="relative reveal reveal-d2 bg-sand/70 rounded-3xl p-6 hover:shadow-warm">
         <p class="font-display text-accent text-4xl mb-3">03</p>
         <h3 class="font-display text-lg text-deep mb-2">Первая встреча</h3>
         <p class="text-sm text-deep/90 leading-relaxed">Разбираем ваш запрос, определяем сильные стороны и цели. Уже после неё у вас есть понятные шаги для работы.</p>
       </div>
-      <div class="relative reveal reveal-d3 bg-sand/70 rounded-3xl p-6 hover:shadow-xl transition-shadow">
+      <div class="relative reveal reveal-d3 bg-sand/70 rounded-3xl p-6 hover:shadow-warm">
         <p class="font-display text-accent text-4xl mb-3">04</p>
         <h3 class="font-display text-lg text-deep mb-2">Программа работы</h3>
         <p class="text-sm text-deep/90 leading-relaxed">Когда основная цель достигнута — снижаем частоту встреч. Вы учитесь опираться на свои врождённые наклонности самостоятельно.</p>
@@ -446,7 +449,7 @@ document.addEventListener('click', function(e){
     <div class="grid lg:grid-cols-2 gap-8">
 
       <!-- Кейс 1 -->
-      <article class="reveal card bg-cream rounded-3xl p-7 sm:p-9 flex flex-col hover:shadow-xl">
+      <article class="reveal bg-cream rounded-3xl p-7 sm:p-9 flex flex-col hover:shadow-warm">
         <p class="uppercase tracking-[0.25em] text-xs font-bold text-accent mb-3">Кейс 1</p>
         <h3 class="font-display text-2xl text-deep mb-4 leading-snug">
           Молодая женщина, 29 лет. Испытательный срок на новой работе
@@ -473,7 +476,7 @@ document.addEventListener('click', function(e){
       </article>
 
       <!-- Кейс 2 -->
-      <article class="reveal reveal-d1 card bg-cream rounded-3xl p-7 sm:p-9 flex flex-col hover:shadow-xl">
+      <article class="reveal reveal-d1 bg-cream rounded-3xl p-7 sm:p-9 flex flex-col hover:shadow-warm">
         <p class="uppercase tracking-[0.25em] text-xs font-bold text-accent mb-3">Кейс 2</p>
         <h3 class="font-display text-2xl text-deep mb-4 leading-snug">
           Клиентка — главный бухгалтер организации
