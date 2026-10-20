@@ -239,21 +239,8 @@ document.addEventListener('click', function(e){
       <a href="#cases" class="nav-link">Кейсы</a>
       <a href="#faq" class="nav-link">Вопросы</a>
     </nav>
-    <!-- Ссылка на Telegram-бота -->
-    <a href="https://telegram.me/Trainer_Annabot?start=wwb_fs8fe22dc4-1aa6-4606-a9de-bc095563965d" target="_blank" rel="noopener" class="btn-accent hidden sm:inline-flex items-center px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider shrink-0">
-      Записаться
-    </a>
   </div>
 </header>
-
-<!-- ============ ПЛАВАЮЩАЯ КНОПКА ЗАПИСИ ============ -->
-<!-- Ссылка на Telegram-бота -->
-<a href="https://telegram.me/Trainer_Annabot?start=wwb_fs8fe22dc4-1aa6-4606-a9de-bc095563965d" target="_blank" rel="noopener" id="fab" class="fab btn-accent flex items-center gap-2.5 pl-4 pr-5 py-3.5 rounded-full text-xs sm:text-sm font-semibold uppercase tracking-wider shadow-lg">
-  <svg class="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-    <path d="M21.9 4.3c.3-1.3-.9-2.3-2-1.7L2.7 9.7c-1.2.5-1.2 2.2 0 2.7l4.3 1.7 1.6 5c.4 1.1 1.8 1.3 2.5.4l2.2-2.7 4.3 3.2c.9.6 2.1.2 2.4-.9l2.9-15z"/>
-  </svg>
-  Записаться
-</a>
 
 <!-- ============ ЭКРАН 1 — ГЛАВНЫЙ ============ -->
 <section id="hero" class="relative overflow-hidden min-h-screen flex flex-col hero-safe px-6 sm:px-10 lg:px-16 py-14 lg:py-16">
@@ -317,7 +304,7 @@ document.addEventListener('click', function(e){
     <div class="order-3 lg:col-start-1 lg:row-start-2 lg:self-start pt-6 lg:pt-0 flex justify-center lg:justify-start reveal reveal-d2">
       <a href="https://telegram.me/Trainer_Annabot?start=wwb_fs8fe22dc4-1aa6-4606-a9de-bc095563965d" target="_blank" rel="noopener"
          class="btn-accent w-full sm:w-auto inline-flex justify-center items-center gap-3 px-8 py-4 rounded-full text-sm font-semibold uppercase tracking-wider">
-        Узнать подробнее
+        Переходи в Telegram
         <span aria-hidden="true">&rarr;</span>
       </a>
     </div>
@@ -744,7 +731,6 @@ document.addEventListener('click', function(e){
 <script>
 (function () {
   var header = document.getElementById('siteHeader');
-  var fab = document.getElementById('fab');
 
   function onScroll() {
     var y = window.pageYOffset || document.documentElement.scrollTop;
@@ -753,12 +739,6 @@ document.addEventListener('click', function(e){
       header.classList.add('visible', 'scrolled');
     } else {
       header.classList.remove('visible', 'scrolled');
-    }
-
-    if (y > 500) {
-      fab.classList.add('visible');
-    } else {
-      fab.classList.remove('visible');
     }
   }
 
