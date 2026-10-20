@@ -89,9 +89,14 @@ document.addEventListener('click', function(e){
     position: fixed; top: 0; left: 0; right: 0; z-index: 60;
     padding: .9rem 0;
     transform: translateY(-100%);
-    transition: transform .35s cubic-bezier(0.23, 1, 0.32, 1), background-color .4s ease, box-shadow .4s ease;
+    /* visibility гасит скрытую шапку из порядка табуляции (Riley-фикс аудита):
+       transform не убирает фокусируемые ссылки с клавиатурного маршрута.
+       Переход по visibility — дискретный: при показе видна сразу, при скрытии
+       в конце анимации, поэтому шапка не «мигает» ни в одну сторону. */
+    visibility: hidden;
+    transition: transform .35s cubic-bezier(0.23, 1, 0.32, 1), background-color .4s ease, box-shadow .4s ease, visibility .35s;
   }
-  .site-header.visible { transform: translateY(0); }
+  .site-header.visible { transform: translateY(0); visibility: visible; }
   .site-header.scrolled {
     background: rgba(209,195,184,.9);
     backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
@@ -225,8 +230,19 @@ document.addEventListener('click', function(e){
       <a href="#about" class="nav-link">Обо мне</a>
       <a href="#cases" class="nav-link">Кейсы</a>
     </nav>
+
+    <!-- CTA в шапке (P1 аудита 2026-10-20): цель достижима из любого места страницы.
+         На <sm нет места рядом с логотипом — там CTA остаётся в hero и в конце секций. -->
+    <a href="https://telegram.me/Trainer_Annabot?start=wwb_fs8fe22dc4-1aa6-4606-a9de-bc095563965d" target="_blank" rel="noopener"
+       class="btn-accent hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider whitespace-nowrap">
+      Переходи в Telegram
+      <span aria-hidden="true">&rarr;</span>
+    </a>
   </div>
 </header>
+
+<!-- Контентная зона в одном <main> (структурный фикс аудита 2026-10-20) -->
+<main>
 
 <!-- ============ ЭКРАН 1 — ГЛАВНЫЙ ============ -->
 <section id="hero" class="relative overflow-hidden min-h-screen flex flex-col hero-safe px-6 sm:px-10 lg:px-16 py-14 lg:py-16">
@@ -359,11 +375,13 @@ document.addEventListener('click', function(e){
 <section id="about" class="relative overflow-hidden px-6 sm:px-10 lg:px-20 py-20 lg:py-28">
 
   <!-- lg и выше: колонка фото ровно по ширине фото (auto), текст начинается сразу за ней —
-       зазор между фото и текстом = gap сетки (64px), без пустой полосы в колонке. -->
-  <div class="relative z-10 max-w-7xl mx-auto grid lg:grid-cols-[auto_1fr] gap-12 lg:gap-16 items-center">
+       зазор между фото и текстом = gap сетки (64px), без пустой полосы в колонке.
+       lg:sticky + lg:self-start (P1 аудита 2026-10-20): фото держится в кадре, пока идёт
+       длинный текст, и не оставляет под собой пустой колонки. -->
+  <div class="relative z-10 max-w-7xl mx-auto grid lg:grid-cols-[auto_1fr] gap-12 lg:gap-16 items-center lg:items-start">
 
     <!-- Фото в арке (единый мотив с героем) -->
-    <div class="flex justify-center lg:justify-start reveal">
+    <div class="flex justify-center lg:justify-start reveal lg:sticky lg:top-28 lg:self-start">
       <div class="relative w-full max-w-sm">
         <div class="relative bg-sand rounded-t-[14rem] rounded-b-3xl overflow-hidden shadow-2xl aspect-[4/5]">
           <img src="assets/anna-about.webp"
@@ -390,29 +408,30 @@ document.addEventListener('click', function(e){
       </p>
 
       <div class="mb-5 reveal reveal-d1">
-        <p class="flex items-start gap-3 text-base leading-relaxed text-deep mb-2">
-          <span class="mt-1 w-2.5 h-2.5 rounded-full bg-accent shrink-0"></span>
+        <p class="flex items-start gap-3 text-base leading-loose text-deep mb-2.5">
+          <span class="mt-2 w-1.5 h-1.5 rounded-full bg-accent shrink-0"></span>
           ваш индивидуальный психотип;
         </p>
-        <p class="flex items-start gap-3 text-base leading-relaxed text-deep mb-2">
-          <span class="mt-1 w-2.5 h-2.5 rounded-full bg-accent shrink-0"></span>
+        <p class="flex items-start gap-3 text-base leading-loose text-deep mb-2.5">
+          <span class="mt-2 w-1.5 h-1.5 rounded-full bg-accent shrink-0"></span>
           ваши настоящие цели и желания;
         </p>
-        <p class="flex items-start gap-3 text-base leading-relaxed text-deep mb-2">
-          <span class="mt-1 w-2.5 h-2.5 rounded-full bg-accent shrink-0"></span>
+        <p class="flex items-start gap-3 text-base leading-loose text-deep mb-2.5">
+          <span class="mt-2 w-1.5 h-1.5 rounded-full bg-accent shrink-0"></span>
           сильные и слабые стороны;
         </p>
-        <p class="flex items-start gap-3 text-base leading-relaxed text-deep mb-2">
-          <span class="mt-1 w-2.5 h-2.5 rounded-full bg-accent shrink-0"></span>
+        <p class="flex items-start gap-3 text-base leading-loose text-deep mb-2.5">
+          <span class="mt-2 w-1.5 h-1.5 rounded-full bg-accent shrink-0"></span>
           комфортный темп и формат работы;
         </p>
-        <p class="flex items-start gap-3 text-base leading-relaxed text-deep mb-2">
-          <span class="mt-1 w-2.5 h-2.5 rounded-full bg-accent shrink-0"></span>
+        <p class="flex items-start gap-3 text-base leading-loose text-deep mb-2.5">
+          <span class="mt-2 w-1.5 h-1.5 rounded-full bg-accent shrink-0"></span>
           ресурсы и возможные ограничения;
         </p>
       </div>
 
-      <p class="text-base leading-relaxed text-deep mb-5 reveal reveal-d2">
+      <!-- Абзац-переход набран Playfair курсивом (P1 аудита): якорь для сканирования стены -->
+      <p class="font-display italic text-lg leading-relaxed text-deep mb-6 mt-1 reveal reveal-d2">
         Это позволяет быстрее определиться с направлением и сделать первые шаги без лишних сомнений.
       </p>
 
@@ -424,29 +443,33 @@ document.addEventListener('click', function(e){
         Вас ждут практические рекомендации, которые помогут:
       </p>
 
+      <!-- Второй список отделён акцентной планкой (P1 аудита) — два списка читаются
+           как разные блоки, а не как одна стена из 11 точек -->
+      <div class="accent-line mb-7 reveal reveal-d2"></div>
+
       <div class="reveal reveal-d2">
-        <p class="flex items-start gap-3 text-base leading-relaxed text-deep mb-2">
-          <span class="mt-1 w-2.5 h-2.5 rounded-full bg-accent shrink-0"></span>
+        <p class="flex items-start gap-3 text-base leading-loose text-deep mb-2.5">
+          <span class="mt-2 w-1.5 h-1.5 rounded-full bg-accent shrink-0"></span>
           понять, возвращаться ли в прежнюю профессию или выбрать новую;
         </p>
-        <p class="flex items-start gap-3 text-base leading-relaxed text-deep mb-2">
-          <span class="mt-1 w-2.5 h-2.5 rounded-full bg-accent shrink-0"></span>
+        <p class="flex items-start gap-3 text-base leading-loose text-deep mb-2.5">
+          <span class="mt-2 w-1.5 h-1.5 rounded-full bg-accent shrink-0"></span>
           определить свои сильные стороны, цели и желания;
         </p>
-        <p class="flex items-start gap-3 text-base leading-relaxed text-deep mb-2">
-          <span class="mt-1 w-2.5 h-2.5 rounded-full bg-accent shrink-0"></span>
+        <p class="flex items-start gap-3 text-base leading-loose text-deep mb-2.5">
+          <span class="mt-2 w-1.5 h-1.5 rounded-full bg-accent shrink-0"></span>
           выбрать подходящий формат работы: найм, фриланс или другое направление;
         </p>
-        <p class="flex items-start gap-3 text-base leading-relaxed text-deep mb-2">
-          <span class="mt-1 w-2.5 h-2.5 rounded-full bg-accent shrink-0"></span>
+        <p class="flex items-start gap-3 text-base leading-loose text-deep mb-2.5">
+          <span class="mt-2 w-1.5 h-1.5 rounded-full bg-accent shrink-0"></span>
           разработать стратегию выхода на работу;
         </p>
-        <p class="flex items-start gap-3 text-base leading-relaxed text-deep mb-2">
-          <span class="mt-1 w-2.5 h-2.5 rounded-full bg-accent shrink-0"></span>
+        <p class="flex items-start gap-3 text-base leading-loose text-deep mb-2.5">
+          <span class="mt-2 w-1.5 h-1.5 rounded-full bg-accent shrink-0"></span>
           чувствовать себя увереннее на собеседованиях;
         </p>
-        <p class="flex items-start gap-3 text-base leading-relaxed text-deep mb-2">
-          <span class="mt-1 w-2.5 h-2.5 rounded-full bg-accent shrink-0"></span>
+        <p class="flex items-start gap-3 text-base leading-loose text-deep mb-2.5">
+          <span class="mt-2 w-1.5 h-1.5 rounded-full bg-accent shrink-0"></span>
           найти работу, которая подходит именно вам и востребована на рынке.
         </p>
       </div>
@@ -484,7 +507,7 @@ document.addEventListener('click', function(e){
       <h2 class="font-display text-[1.55rem] sm:text-[1.95rem] lg:text-[2.25rem] text-deep reveal">Отзывы и кейсы</h2>
     </div>
 
-    <div class="grid lg:grid-cols-2 gap-8">
+    <div class="grid lg:grid-cols-2 gap-8 lg:items-start">
 
       <!-- Кейс 1 -->
       <article class="reveal bg-sand rounded-3xl p-7 sm:p-9 flex flex-col shadow-card hover:shadow-warm">
@@ -538,17 +561,18 @@ document.addEventListener('click', function(e){
           <li class="flex gap-3"><span class="text-accent">—</span> дальнейшую свою работу клиентка теперь строит с учетом своих врожденных наклонностей, что дает ей возможность не создавать конфликтных ситуаций;</li>
           <li class="flex gap-3"><span class="text-accent">—</span> проходит сложные ситуации на работе и в жизни спокойно и уверенно, опираясь на свои сильные стороны.</li>
         </ul>
-
-        <!-- Скриншот отзыва клиентки -->
-        <div class="mt-6">
-          <img src="assets/otzyv.jpg"
-               alt="Отзыв клиентки Ольги Соловьёвой"
-               loading="lazy" decoding="async"
-               class="w-full rounded-2xl border border-cocoa/20 shadow-sm"
-               onerror="this.parentElement.style.display='none'">
-        </div>
       </article>
     </div>
+
+    <!-- Скриншот отзыва вынесен из карточки в самостоятельный блок под сеткой
+         (P2 аудита 2026-10-20): в карточке он сжимался до ~420px и текст сообщения
+         не читался. Здесь max-w-md + центрирование дают кегль ×2. -->
+    <img src="assets/otzyv.jpg"
+         alt="Отзыв клиентки Ольги Соловьёвой"
+         width="507" height="205"
+         loading="lazy" decoding="async"
+         class="mt-12 mx-auto block w-full max-w-md rounded-2xl border border-cocoa/20 shadow-sm"
+         onerror="this.style.display='none'">
 
     <div class="text-center mt-12">
       <!-- Ссылка на Telegram-бота -->
@@ -560,6 +584,7 @@ document.addEventListener('click', function(e){
   </div>
 </section>
 
+</main>
 
 <!-- ============ ЭКРАН 5 — ПОДВАЛ ============ -->
 <footer id="contact" class="relative px-6 sm:px-10 lg:px-20 pt-20 pb-16 lg:pt-24 lg:pb-20 bg-deep text-cream curve-top">
