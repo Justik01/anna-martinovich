@@ -507,7 +507,7 @@ document.addEventListener('click', function(e){
       <h2 class="font-display text-[1.55rem] sm:text-[1.95rem] lg:text-[2.25rem] text-deep reveal">Отзывы и кейсы</h2>
     </div>
 
-    <div class="grid lg:grid-cols-2 gap-8 lg:items-start">
+    <div class="grid lg:grid-cols-2 gap-8">
 
       <!-- Кейс 1 -->
       <article class="reveal bg-sand rounded-3xl p-7 sm:p-9 flex flex-col shadow-card hover:shadow-warm">
@@ -561,18 +561,17 @@ document.addEventListener('click', function(e){
           <li class="flex gap-3"><span class="text-accent">—</span> дальнейшую свою работу клиентка теперь строит с учетом своих врожденных наклонностей, что дает ей возможность не создавать конфликтных ситуаций;</li>
           <li class="flex gap-3"><span class="text-accent">—</span> проходит сложные ситуации на работе и в жизни спокойно и уверенно, опираясь на свои сильные стороны.</li>
         </ul>
+        <!-- Скриншот отзыва клиентки -->
+        <div class="mt-6">
+          <img src="assets/otzyv.jpg"
+               alt="Отзыв клиентки Ольги Соловьёвой"
+               width="507" height="205"
+               loading="lazy" decoding="async"
+               class="w-full rounded-2xl border border-cocoa/20 shadow-sm"
+               onerror="this.parentElement.style.display='none'">
+        </div>
       </article>
     </div>
-
-    <!-- Скриншот отзыва вынесен из карточки в самостоятельный блок под сеткой
-         (P2 аудита 2026-10-20): в карточке он сжимался до ~420px и текст сообщения
-         не читался. Здесь max-w-md + центрирование дают кегль ×2. -->
-    <img src="assets/otzyv.jpg"
-         alt="Отзыв клиентки Ольги Соловьёвой"
-         width="507" height="205"
-         loading="lazy" decoding="async"
-         class="mt-12 mx-auto block w-full max-w-md rounded-2xl border border-cocoa/20 shadow-sm"
-         onerror="this.style.display='none'">
 
     <div class="text-center mt-12">
       <!-- Ссылка на Telegram-бота -->
